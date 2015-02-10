@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block description %}
+    {% block title %}{% block keywords %}{% endblock %} :: {{ block.super }}{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <div id="breadcrumbs">
+        <a href="/">Главная</a>
+	    » <a href="/news/">Новости</a>
+	    » {{ news.name }}
+    </div>
+<h2>{{ news.name }}</h2>
+    {% include "menu.html" %}
+    <div id="right_column">
+	<div class="main">
+		<div id="image">
+				<div><a href="{{ news.image }}" rel="lightbox[plants]"><img src="{{ news.image }}" alt="{{ news.name }}"></a></div>			
+		</div>
+	<p>{{ news.content|safe }}</p>	
+    <br>
+    </div>
+</div>
+{% endblock %}

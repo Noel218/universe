@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+        <div id="breadcrumbs">
+        <a href="/">Главная</a> » Страница авторизации
+    </div>
+    {% if user.is_authenticated %}
+        Здравствуйте, {{ user.username }}.
+        <a href="/accounts/logout/">Выйти</p>
+    {% else %}
+<h2>Пожалуйста авторизируйтесь</h2>
+    {% include "menu.html" %}
+    <div id="right_column">
+    <form action="{% url django.contrib.auth.views.login %}" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+        <tr>
+            <th>
+                <input type="hidden" name="next" value="/">
+            </th>
+            <td>
+                <input type="submit" value="{% trans "Log in" %}">
+            </td>
+        <tr>
+    </table>
+        Нет логина? <a href="/accounts/register/">Зарегистрироваться</p>
+    </form>
+
+    </div>
+    {% endif %}
+{% endblock %}

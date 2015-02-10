@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load comments i18n %}
+
+{% block title %}{{ flatpage.title }} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div id="breadcrumbs">
+        <a href="/">Главная</a> » Прайс-лист
+    </div>
+<h2>{{ flatpage.title }}</h2>
+    {% include "menu.html" %}
+    <div id="right_column">
+        <div id="flatpage_content">
+        {{ flatpage.content }}
+        </div>
+</div>
+{% if flatpage.enable_comments %}
+{% get_comment_form for flatpage as form %}
+<form id="comments-form" action="{% comment_form_target %}" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+        <tr><td colspan="2"><input type="submit" value="{% trans "Post" %}"></td></tr>
+        <tr><td colspan="2"><input type="hidden" name="next" value="{{ flatpage.get_absolute_url }}"></td></tr>
+    </table>
+</form>
+<section id="item-comments">
+    {% render_comment_list for flatpage %}
+</section>
+{% endif %}
+{% endblock %}

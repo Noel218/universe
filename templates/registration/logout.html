@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+        <div id="breadcrumbs">
+        <a href="/">Главная</a> » Страница выхода с личного кабинета
+    </div>
+<h2>Всего доброго {{ account }}!</h2>
+    {% include "menu.html" %}
+
+{% endblock %}

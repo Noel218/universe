@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load cache %}
+
+{% block content %}
+ <div id="breadcrumbs">
+        <a href="/">Главная</a> » Прайс-лист
+    </div>
+<h2>Новости</h2>
+    {% include "menu.html" %}
+    <div id="right_column">
+        <ul id="news">
+		   {% for news in all_news %}
+			<li>
+				{% if news.image %}<a href="{{ news.get_absolute_url }}"><img src="{{ news.image }}""</a>{% endif %}
+				<p>{{ news.created_date|date:"SHORT_DATE_FORMAT" }}</p>
+                <a href="{{ news.get_absolute_url }}"><span>{{ news.name }}</span></a>
+				<h3>{{ news.headline }} ...	</h3>
+			</li>
+			{% endfor %}
+		   </ul>
+        </div>
+
+{% endblock %}
