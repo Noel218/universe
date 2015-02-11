@@ -6,27 +6,35 @@
 		<link href="{{ MEDIA_URL }}favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta http-equiv="X-UA-Compatible" content="IE=8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="author" content="Omel4uk Vitaly">
+        <meta name="author" content="Noel">
         <meta name="keywords" content="{% block keywords %}Модель мироздания Сознанием наделенная{% endblock %}">
         <meta name="description" content="{% block description %}Модель мироздания Сознанием наделенная{% endblock %}">
         <link href="{{ MEDIA_URL }}css/style.css" type="text/css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/modal-contact-form.css" />
         <!--[if lt IE 9]>
         <link href="{{ MEDIA_URL }}css/style_ie8.css" type="text/css" rel="stylesheet">
         <![endif]-->        
         <title>{% block title %}Модель мироздания Сознанием наделенная{% endblock %}</title>
         <script src="{{ MEDIA_URL }}js/jquery-1.7.2.min.js"></script>
+        <script src="{{ MEDIA_URL }}js/jquery.placeholder.min.js"></script>
+        <script src="{{ MEDIA_URL }}js/placeholder.js"></script>
         <script src="{{ MEDIA_URL }}js/button.js" type="text/javascript"></script>
         {% block extrahead %}{% endblock %}
     </head>
     <body>
     {{ constants.yandex_counter|safe }}
-    <div id="main_column">q
-    </div>
-
-
+    <div id="main_column"><a href="/" id="logo"></a><span id="slogan"></span>
+        <ol id="main_menu">
+            <li class="menu_active"><p>Обращение к Человечеству</p></li>
+            <li><a href="/">Аспекты Мироздания</a></li>
+            <li><a href="/">Аспекты Познания</a></li>
+            <li><a href="/">Непознаваемое</a></li>
+            <li><a href="/">Факты, прогнозы...</a></li>
+        </ol>
+        <div id="content">
 {% block content %}
 {% endblock %}
+        </div>
+    </div>
     <div id="right_column">
         <div id="right_top_menu">
             <a href="/">Об авторе</a>
@@ -35,6 +43,36 @@
             <a href="/" class="but rus"></a>
             <a href="/" class="but en"></a>
         </div>
+        <div id="social">
+            <a href="/" class="fb"></a>
+            <a href="/" class="tw"></a>
+            <a href="/" class="vk"></a>
+            <a href="/" class="ok"></a>
+            <a href="/" class="gp"></a>
+        </div>
+        <div id="search">
+        <form id="search-block-form" action="{% url search %}" method="get" class="searchform">
+            <div class="form-item">
+                <input type="text" name="" value="" maxlength="128" placeholder="Найти...">
+            </div>
+            <div class="form-actions">
+                <input type="submit" name="op" value="Поиск" class="form-submit">
+            </div>
+        </form>
+        </div>
+        <h3>Другие статьи</h3>
+        <ul>
+            <li>
+                <a href="/"><img src="{{ MEDIA_URL }}img/right_pic1.jpg">
+                <h4>Теория свертывания информации</h4>
+                <p>Теория свертывания информации в полном объеме отроется по данной ссылке.</p></a>
+            </li>
+            <li>
+                <a href="/"><img src="{{ MEDIA_URL }}img/right_pic2.jpg">
+                <h4>Обращение к Человечеству</h4>
+                <p>Обращение к Человечеству в полном объеме отроется по данной ссылке.</p></a>
+            </li>
+        </ul>
     </div>
 
 	{{ constants.google_analytics|safe }}

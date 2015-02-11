@@ -51,7 +51,7 @@ class News(models.Model):
     slug         = AutoSlugField(_('Slug'), populate_from='name', overwrite=True, editable=True)
     headline     = models.CharField(_('headline'), max_length=255)
     content      = models.TextField(_('content'))
-    image        = models.URLField(_('image'), blank=True)
+    image        = models.ImageField(_('image'), upload_to="upload", blank=True)
     published    = models.BooleanField(_('published'), default=True)
     created_date = CreationDateTimeField(_('creation date'))
     updated_date = ModificationDateTimeField(_('modification date'))
