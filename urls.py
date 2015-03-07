@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     (r'^eshop/', include('eshop.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^search/$', search_view, {}, 'search'),
-    url(r'^news/(?P<slug>[-\w]+)/$', object_detail, {
+    url(r'^articles/(?P<slug>[-\w]+)/$', object_detail, {
         'queryset' : News.objects.filter(published=True),
         'template_object_name' : 'news',
         },
@@ -36,11 +36,8 @@ urlpatterns = patterns('',
     (r'^production/', direct_to_template, {
         'template':'production.html',
         }),
-    (r'^news/', direct_to_template, {
+    (r'^articles/', direct_to_template, {
         'template': 'news.html',
-        'extra_context': {
-            'all_news': News.objects.all_news(),
-            },
         }),
     (r'^price/', direct_to_template, {
         'template': 'price.html',

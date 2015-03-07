@@ -14,6 +14,9 @@ class NewsManager(TreeManager):
     def all_news(self):
         return self.get_query_set().filter(published=True)
 
+    def get_root_news(self):
+        return self.get_query_set().filter(published=True, parent__isnull=True)
+
 
 class Constant(models.Model):
     """ define application constants """
@@ -56,7 +59,7 @@ class News(MPTTModel):
     slug = models.SlugField(_('Slug'), editable=True)
     headline = models.CharField(_('headline'), max_length=255)
     content = models.TextField(_('content'))
-    image = models.ImageField(_('image'), blank=True, upload_to='upload')
+    main_image = models.ImageField(_('main image'), blank=True, upload_to='upload', null=True)
     published = models.BooleanField(_('published'), default=True)
     created_date = CreationDateTimeField(_('creation date'))
     updated_date = ModificationDateTimeField(_('modification date'))
@@ -75,6 +78,12 @@ class News(MPTTModel):
             return ('main_news', (), {'object_id': self.pk})
 
     class Meta:
-        verbose_name = _('news_page')
-        verbose_name_plural = _('news_pages')
+        verbose_name = _('news page')
+        verbose_name_plural = _('news pages')
         ordering = ['created_date']
+
+
+class NewsImage(models.Model):
+    """ news item image """
+    news = models.ForeignKey('News', related_name='images')
+    image = models.ImageField(upload_to="upload")

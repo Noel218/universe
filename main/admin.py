@@ -7,6 +7,7 @@ from django.contrib.flatpages.admin import FlatPageAdmin as DefaultFlatPageAdmin
 from django.conf import settings
 from main.models import Constant, News
 from django.utils.translation import ugettext as _
+from mptt.admin import MPTTModelAdmin
 
 admin.site.unregister(User)
 admin.site.unregister(FlatPage)
@@ -89,7 +90,7 @@ class FlatPageAdmin(DefaultFlatPageAdmin):
         js = ('tiny_mce/tiny_mce.js', 'tiny_mce/init.js')
 
 
-class NewsAdmin(admin.ModelAdmin):
+class NewsAdmin(MPTTModelAdmin):
     """Customize news admin page"""
 
     list_display = ('name', 'published', 'created_date')

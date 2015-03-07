@@ -25,7 +25,7 @@
     <div id="main_column"><a href="/" id="logo"></a><span id="slogan"></span>
         <ol id="main_menu">
             <li class="menu_active"><p>Обращение к Человечеству</p></li>
-            {% for news in all_news %}
+            {% for news in root_news %}
             <li><a href="{{ news.get_absolute_url }}">{{ news.name }}</a></li>
             {% endfor %}
         </ol>
@@ -59,6 +59,7 @@
         </form>
         </div>
         <h3>Другие статьи</h3>
+        {% block other_news %}
         <ul>
             <li>
                 <a href="/"><img src="{{ MEDIA_URL }}img/right_pic1.jpg">
@@ -71,6 +72,7 @@
                 <p>Обращение к Человечеству в полном объеме отроется по данной ссылке.</p></a>
             </li>
         </ul>
+        {% endblock %}
     </div>
 
 	{{ constants.google_analytics|safe }}

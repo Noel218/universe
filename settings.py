@@ -145,6 +145,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "eshop.context_processors.eshop",
     "main.context_processors.constants",
+    "main.context_processors.root_news",
     )
 
 CACHE_BACKEND = 'dummy://' if DEBUG else 'file://%s/cache?timeout=3000' % PROJECT_ROOT

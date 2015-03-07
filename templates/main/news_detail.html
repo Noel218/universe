@@ -7,6 +7,20 @@
 
 {% block content %}
 <h2>{{ news.name }}</h2>
-    <img src="{{ news.image }}">
+    <img src="{{ news.main_image }}">
     {{ news.content|safe }}
+{% endblock %}
+
+{% block other_news %}
+    <ul>
+    {% for child in news.get_children %}
+                <li>
+                {% if child.main_image %}
+                    <a href="/"><img src="{{ child.main_image.url }}"></a>
+                {% endif %}
+                <h4>{{ child.name }}</h4>
+                <p>{{ child.headline }}</p></a>
+            </li>
+    {% endfor %}
+    </ul>
 {% endblock %}
