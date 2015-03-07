@@ -11,6 +11,7 @@ from django.utils.translation import ugettext as _
 admin.site.unregister(User)
 admin.site.unregister(FlatPage)
 
+
 class ConstantAdmin(admin.ModelAdmin):
     """Customize constants admin page"""
 
@@ -28,11 +29,12 @@ class ConstantAdmin(admin.ModelAdmin):
         obj.site_id = settings.SITE_ID
         obj.save()
 
+
 class UserAdmin(DefaultUserAdmin):
     """Customize user admin form"""
 
     list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
-    list_filter  = ('is_active', 'is_staff')
+    list_filter = ('is_active', 'is_staff')
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
@@ -65,6 +67,7 @@ class UserAdmin(DefaultUserAdmin):
 
         return fields
 
+
 class FlatPageAdmin(DefaultFlatPageAdmin):
     """Customize flatpage admin page"""
 
@@ -73,7 +76,7 @@ class FlatPageAdmin(DefaultFlatPageAdmin):
     def queryset(self, request):
         """ show flatpages only for current site """
         return super(FlatPageAdmin, self).queryset(request).filter(
-                sites=Site.objects.get_current())
+            sites=Site.objects.get_current())
 
     def save_model(self, request, obj, form, change):
         """ pre save actions """
@@ -85,16 +88,18 @@ class FlatPageAdmin(DefaultFlatPageAdmin):
     class Media:
         js = ('tiny_mce/tiny_mce.js', 'tiny_mce/init.js')
 
+
 class NewsAdmin(admin.ModelAdmin):
     """Customize news admin page"""
 
     list_display = ('name', 'published', 'created_date')
-    list_filter  = ('published',)
-    ordering     = ('name', 'created_date', 'published')
+    list_filter = ('published',)
+    ordering = ('name', 'created_date', 'published')
     prepopulated_fields = {"slug": ("name",)}
 
     class Media:
         js = ('tiny_mce/tiny_mce.js', 'tiny_mce/init.js')
+
 
 admin.site.register(User, UserAdmin)
 admin.site.register(FlatPage, FlatPageAdmin)

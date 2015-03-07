@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.6 virtualenv at ~/projects/universe/venv" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.8 virtualenv at ~/Projects/universe/venv" project-jdk-type="Python SDK" />
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <PyConsoleSettings />
@@ -39,4 +39,3 @@
     </states>
   </component>
 </project>
-
