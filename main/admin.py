@@ -5,7 +5,7 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.admin import UserAdmin as DefaultUserAdmin
 from django.contrib.flatpages.admin import FlatPageAdmin as DefaultFlatPageAdmin
 from django.conf import settings
-from main.models import Constant, News
+from main.models import Constant, News, NewsImage
 from django.utils.translation import ugettext as _
 from mptt.admin import MPTTModelAdmin
 
@@ -90,6 +90,11 @@ class FlatPageAdmin(DefaultFlatPageAdmin):
         js = ('tiny_mce/tiny_mce.js', 'tiny_mce/init.js')
 
 
+class NewsImageInlineAdmin(admin.TabularInline):
+    model = NewsImage
+    extra = 1
+
+
 class NewsAdmin(MPTTModelAdmin):
     """Customize news admin page"""
 
@@ -97,10 +102,10 @@ class NewsAdmin(MPTTModelAdmin):
     list_filter = ('published',)
     ordering = ('name', 'created_date', 'published')
     prepopulated_fields = {"slug": ("name",)}
+    inlines = [NewsImageInlineAdmin,]
 
     class Media:
         js = ('tiny_mce/tiny_mce.js', 'tiny_mce/init.js')
-
 
 admin.site.register(User, UserAdmin)
 admin.site.register(FlatPage, FlatPageAdmin)
