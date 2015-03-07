@@ -25,10 +25,9 @@
     <div id="main_column"><a href="/" id="logo"></a><span id="slogan"></span>
         <ol id="main_menu">
             <li class="menu_active"><p>Обращение к Человечеству</p></li>
-            <li><a href="/">Аспекты Мироздания</a></li>
-            <li><a href="/">Аспекты Познания</a></li>
-            <li><a href="/">Непознаваемое</a></li>
-            <li><a href="/">Факты, прогнозы...</a></li>
+            {% for news in all_news %}
+            <li><a href="{{ news.get_absolute_url }}">{{ news.name }}</a></li>
+            {% endfor %}
         </ol>
         <div id="content">
 {% block content %}
@@ -37,8 +36,8 @@
     </div>
     <div id="right_column">
         <div id="right_top_menu">
-            <a href="/">Об авторе</a>
-            <a href="/">Библиотека</a>
+            <a href="/about/">Об авторе</a>
+            <a href="/library/">Библиотека</a>
             <a href="/">Контакты</a>
             <a href="/" class="but rus"></a>
             <a href="/" class="but en"></a>
@@ -47,7 +46,6 @@
             <a href="/" class="fb"></a>
             <a href="/" class="tw"></a>
             <a href="/" class="vk"></a>
-            <a href="/" class="ok"></a>
             <a href="/" class="gp"></a>
         </div>
         <div id="search">

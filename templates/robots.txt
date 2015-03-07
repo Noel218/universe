@@ -1,5 +1,5 @@
 User-agent: *
 Disallow: /
 
-Host: www.hozclub.com.ua
-Sitemap: http://www.hozclub.com.ua/sitemap.xml
+Host: www.universe.org.ua
+Sitemap: http://www.universe.org.ua/sitemap.xml
