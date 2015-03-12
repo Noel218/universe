@@ -7,18 +7,37 @@
 
 {% block content %}
 <h2>{{ news.name }}</h2>
-    <img src="{{ news.main_image }}">
+    {% if child.main_image %}
+        <img src="{{ child.main_image.url }}">
+    {% else %}
+        <img src="{{ MEDIA_URL }}img/universe.jpg">
+    {% endif %}
     {{ news.content|safe }}
 {% endblock %}
 
 {% block other_news %}
     <ul>
     {% for child in news.get_children %}
-                <li>
+            <li>
+                <a href="{{ child.get_absolute_url }}">
                 {% if child.main_image %}
-                    <a href="/"><img src="{{ child.main_image.url }}"></a>
+                    <img src="{{ child.main_image.url }}">
+                    {% else %}
+                    <img src="{{ MEDIA_URL }}img/universe.jpg">
                 {% endif %}
-                <h4>{{ child.name }}</h4>
+                    <h4>{{ child.name }}</h4>
+                <p>{{ child.headline }}</p></a>
+            </li>
+    {% endfor %}
+    {% for child in parent.get_children %}
+            <li>
+                <a href="{{ child.get_absolute_url }}">
+                {% if child.main_image %}
+                    <img src="{{ child.main_image.url }}">
+                    {% else %}
+                    <img src="{{ MEDIA_URL }}img/universe.jpg">
+                {% endif %}
+                    <h4>{{ child.name }}</h4>
                 <p>{{ child.headline }}</p></a>
             </li>
     {% endfor %}

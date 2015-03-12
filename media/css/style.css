@@ -186,7 +186,7 @@ div#right_column ul{width: 275px;
 div#right_column ul li {display: inline-block;padding-bottom: 15px}
 div#right_column ul li a{text-decoration: none;color:#808080}
 div#right_column ul li a:hover{text-decoration: none;color:#9a0709}
-div#right_column ul li a img{width: 275px;height:200px;
+div#right_column ul li a img{width: 275px;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;

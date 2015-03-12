@@ -61,16 +61,18 @@
         <h3>Другие статьи</h3>
         {% block other_news %}
         <ul>
+        {% for news in root_news %}
             <li>
-                <a href="/"><img src="{{ MEDIA_URL }}img/right_pic1.jpg">
-                <h4>Теория свертывания информации</h4>
-                <p>Теория свертывания информации в полном объеме отроется по данной ссылке.</p></a>
+                <a href="{{ news.get_absolute_url }}">
+                {% if news.main_image %}
+                    <img src="{{ MEDIA_URL }}{{ news.main_image.url }}">
+                    {% else %}
+                    <img src="{{ MEDIA_URL }}img/universe.jpg">
+                {% endif %}
+                    <h4>{{ news.name }}</h4>
+                <p>{{ news.headline }}</p></a>
             </li>
-            <li>
-                <a href="/"><img src="{{ MEDIA_URL }}img/right_pic2.jpg">
-                <h4>Обращение к Человечеству</h4>
-                <p>Обращение к Человечеству в полном объеме отроется по данной ссылке.</p></a>
-            </li>
+        {% endfor %}
         </ul>
         {% endblock %}
     </div>
