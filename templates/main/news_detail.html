@@ -9,13 +9,13 @@
 <h2>{{ news.name }}</h2>
     {% if child.main_image %}
         <img src="{{ child.main_image.url }}">
-    {% else %}
-        <img src="{{ MEDIA_URL }}img/universe.jpg">
     {% endif %}
     {{ news.content|safe }}
 {% endblock %}
 
 {% block other_news %}
+    <h3>Другие статьи раздела</h3>
+    {% if news.level == 0 %}
     <ul>
     {% for child in news.get_children %}
             <li>
@@ -29,7 +29,10 @@
                 <p>{{ child.headline }}</p></a>
             </li>
     {% endfor %}
-    {% for child in parent.get_children %}
+    </ul>
+    {% else %}
+    <ul>
+    {% for child in news.get_siblings %}
             <li>
                 <a href="{{ child.get_absolute_url }}">
                 {% if child.main_image %}
@@ -42,4 +45,5 @@
             </li>
     {% endfor %}
     </ul>
+    {% endif %}
 {% endblock %}
