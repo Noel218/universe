@@ -1,2 +1,2 @@
 # universe
-universe
+universe.org.ua
