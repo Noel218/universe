@@ -33,7 +33,7 @@
     </ul>
 {% endblock %}
 
-
+{% if news.level == 0 %}
 {% block other_news %}
     <h3>Другие статьи раздела</h3>
     <ul>
@@ -53,3 +53,4 @@
     {% endfor %}
     </ul>
 {% endblock %}
+{% endif %}
