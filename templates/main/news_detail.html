@@ -14,28 +14,28 @@
     {% endthumbnail %}
     {% endif %}
     {{ news.content|safe }}
-{% endblock %}
 
-{% block other_news %}
-    <h3>Другие статьи раздела</h3>
-    {% if news.level == 0 %}
-    <ul>
+    <ul id="other_news">
     {% for child in news.get_children %}
             <li>
                 <a href="{{ child.get_absolute_url }}">
+                <h4>{{ child.name }}</h4>
                 {% if child.main_image %}
-                {% thumbnail child.main_image "275x200" crop="center" as im %}
+                {% thumbnail child.main_image "350x250" crop="center" as im %}
                     <img src="{{ im.url }}">
                 {% endthumbnail %}
                     {% else %}
                     <img src="{{ MEDIA_URL }}img/universe.jpg">
                 {% endif %}
-                    <h4>{{ child.name }}</h4>
                 <p>{{ child.headline }}</p></a>
             </li>
     {% endfor %}
     </ul>
-    {% else %}
+{% endblock %}
+
+{% if news.level != 0 %}
+{% block other_news %}
+    <h3>Другие статьи раздела</h3>
     <ul>
     {% for child in news.get_siblings %}
             <li>
@@ -52,5 +52,5 @@
             </li>
     {% endfor %}
     </ul>
-    {% endif %}
 {% endblock %}
+{% endif %}
