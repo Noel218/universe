@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'south',
     'registration',
     'accounts',
+    'sorl.thumbnail',
 )
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'

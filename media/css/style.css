@@ -46,7 +46,7 @@ ol#main_menu {width: 95%;
     font-family: 'Georgia';
     display: table-row;
 }
-ol#main_menu li {display: table-cell; width: auto;text-align: center;height: 36px;padding-left: 2px;vertical-align: bottom;
+ol#main_menu li {display: table-cell; width: auto;text-align: center;height: 36px;vertical-align: bottom;
     background: #f8f8f8;
     border: solid 1px #c1c1c1;border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -56,8 +56,10 @@ ol#main_menu li {display: table-cell; width: auto;text-align: center;height: 36p
 ol#main_menu li:hover{background: #9a0709;}
 ol#main_menu li:hover a{background: #9a0709;color:#fff;}
 ol#main_menu li.menu_active{background: #9a0709; color:#fff;}
-ol#main_menu li a,ol#main_menu li p {background: #fafafa; color:#1e1e1e;text-decoration: none;width: 1000px;height: 130px;display: table-cell;vertical-align: middle}
-ol#main_menu li p{background: #9a0709;color:#fff;font-weight: bold}
+ol#main_menu li a,ol#main_menu li p {background: #fafafa; color:#1e1e1e;text-decoration: none;width: 1000px;height: 60px;display: table-cell;vertical-align: middle;}
+ol#main_menu li p{background: #9a0709;color:#fff;font-weight: bold;border: solid 1px #9a0709;border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;}
 
 div#right_column {width:320px;position: absolute; top: 0px; right: 0px;
     padding: 0 10px;height: 100%;min-height: 153px;

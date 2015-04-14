@@ -27,4 +27,3 @@ def constants(request):
 
 def root_news(request):
     return {'root_news': News.objects.get_root_news()}
-

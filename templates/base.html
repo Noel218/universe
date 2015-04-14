@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 {% load i18n cache mptt_tags %}
+{% load thumbnail %}
 
 <html>
-    <head>
-		<link href="{{ MEDIA_URL }}favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta http-equiv="X-UA-Compatible" content="IE=8">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="author" content="Noel">
-        <meta name="keywords" content="{% block keywords %}Модель мироздания Сознанием наделенная{% endblock %}">
-        <meta name="description" content="{% block description %}Модель мироздания Сознанием наделенная{% endblock %}">
-        <link href="{{ MEDIA_URL }}css/style.css" type="text/css" rel="stylesheet">
-        <!--[if lt IE 9]>
+<head>
+    <link href="{{ MEDIA_URL }}favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Noel">
+    <meta name="keywords" content="{% block keywords %}Модель мироздания Сознанием наделенная{% endblock %}">
+    <meta name="description" content="{% block description %}Модель мироздания Сознанием наделенная{% endblock %}">
+    <link href="{{ MEDIA_URL }}css/style.css" type="text/css" rel="stylesheet">
+    <!--[if lt IE 9]>
         <link href="{{ MEDIA_URL }}css/style_ie8.css" type="text/css" rel="stylesheet">
-        <![endif]-->        
-        <title>{% block title %}Модель мироздания Сознанием наделенная{% endblock %}</title>
-        <script src="{{ MEDIA_URL }}js/jquery-1.7.2.min.js"></script>
-        <script src="{{ MEDIA_URL }}js/jquery.placeholder.min.js"></script>
-        <script src="{{ MEDIA_URL }}js/placeholder.js"></script>
-        <script src="{{ MEDIA_URL }}js/button.js" type="text/javascript"></script>
-        {% block extrahead %}{% endblock %}
-    </head>
-    <body>
-    {{ constants.yandex_counter|safe }}
-    <div id="main_column"><a href="/" id="logo"></a><span id="slogan"></span>
-        <ol id="main_menu">
-            <li class="menu_active"><p>Обращение к Человечеству</p></li>
-            {% for news in root_news %}
-            <li><a href="{{ news.get_absolute_url }}">{{ news.name }}</a></li>
-            {% endfor %}
-        </ol>
-        <div id="content">
-{% block content %}
-{% endblock %}
-        </div>
+        <![endif]-->
+    <title>{% block title %}Модель мироздания Сознанием наделенная{% endblock %}</title>
+    <script src="{{ MEDIA_URL }}js/jquery-1.7.2.min.js"></script>
+    <script src="{{ MEDIA_URL }}js/jquery.placeholder.min.js"></script>
+    <script src="{{ MEDIA_URL }}js/placeholder.js"></script>
+    <script src="{{ MEDIA_URL }}js/button.js" type="text/javascript"></script>
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+{{ constants.yandex_counter|safe }}
+<div id="main_column">
+    {% if request.path == "/" %}<a id="logo">
+    {% else %}
+        <a href="/" id="logo">
+    {% endif %}
+    </a><span id="slogan"></span>
+    <ol id="main_menu">
+        {% for news in root_news %}
+            <li>{% if request.path == news.get_absolute_url or request.path == "/" and news.id = 20 %}<p>{{ news.name }}</p>{% else %}
+                {% if news.id == 20 %}<a href="/">{% else %}
+                    <a href="{{ news.get_absolute_url }}">{% endif %}
+                {{ news.name }}</a>{% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
     </div>
-    <div id="right_column">
-        <div id="right_top_menu">
-            <a href="/about/">Об авторе</a>
-            <a href="/library/">Библиотека</a>
-            <a href="/">Контакты</a>
-            <a href="/" class="but rus"></a>
-            <a href="/" class="but en"></a>
-        </div>
-        <div id="social">
-            <a href="/" class="fb"></a>
-            <a href="/" class="tw"></a>
-            <a href="/" class="vk"></a>
-            <a href="/" class="gp"></a>
-        </div>
-        <div id="search">
+</div>
+<div id="right_column">
+    <div id="right_top_menu">
+        <a href="/about/">Об авторе</a>
+        <a href="/library/">Библиотека</a>
+        <a href="/">Контакты</a>
+        <a href="/" class="but rus"></a>
+        <a href="/" class="but en"></a>
+    </div>
+    <div id="social">
+        <a href="/" class="fb"></a>
+        <a href="/" class="tw"></a>
+        <a href="/" class="vk"></a>
+        <a href="/" class="gp"></a>
+    </div>
+    <div id="search">
         <form id="search-block-form" action="{% url search %}" method="get" class="searchform">
             <div class="form-item">
                 <input type="text" name="" value="" maxlength="128" placeholder="Найти...">
@@ -57,28 +66,32 @@
                 <input type="submit" name="op" value="Поиск" class="form-submit">
             </div>
         </form>
-        </div>
-        {% block other_news %}
+    </div>
+    {% block other_news %}
         <h3>Другие статьи</h3>
         <ul>
-        {% for news in root_news %}
-            <li>
-                <a href="{{ news.get_absolute_url }}">
-                {% if news.main_image %}
-                    <img src="{{ MEDIA_URL }}{{ news.main_image.url }}">
-                    {% else %}
-                    <img src="{{ MEDIA_URL }}img/universe.jpg">
+            {% for news in root_news %}
+                {% if news.id != 20 %}
+                <li>
+                    <a href="{{ news.get_absolute_url }}">
+                        {% if news.main_image %}
+                            {% thumbnail news.main_image "275x200" crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}img/universe.jpg">
+                        {% endif %}
+                        <h4>{{ news.name }}</h4>
+                        <p>{{ news.headline }}</p></a>
+                </li>
                 {% endif %}
-                    <h4>{{ news.name }}</h4>
-                <p>{{ news.headline }}</p></a>
-            </li>
-        {% endfor %}
+            {% endfor %}
         </ul>
-        {% endblock %}
-    </div>
+    {% endblock %}
+</div>
 
-	{{ constants.google_analytics|safe }}
+{{ constants.google_analytics|safe }}
 
 
-    </body>
+</body>
 </html>

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load thumbnail %}
 
 {% block description %}
     {% block title %}{% block keywords %}{% endblock %} :: {{ block.super }}{% endblock %}
@@ -7,8 +8,10 @@
 
 {% block content %}
 <h2>{{ news.name }}</h2>
-    {% if child.main_image %}
-        <img src="{{ child.main_image.url }}">
+    {% if news.main_image %}
+    {% thumbnail news.main_image "350" as im %}
+        <img src="{{ im.url }}">
+    {% endthumbnail %}
     {% endif %}
     {{ news.content|safe }}
 {% endblock %}
@@ -21,7 +24,9 @@
             <li>
                 <a href="{{ child.get_absolute_url }}">
                 {% if child.main_image %}
-                    <img src="{{ child.main_image.url }}">
+                {% thumbnail child.main_image "275x200" crop="center" as im %}
+                    <img src="{{ im.url }}">
+                {% endthumbnail %}
                     {% else %}
                     <img src="{{ MEDIA_URL }}img/universe.jpg">
                 {% endif %}
@@ -36,7 +41,9 @@
             <li>
                 <a href="{{ child.get_absolute_url }}">
                 {% if child.main_image %}
-                    <img src="{{ child.main_image.url }}">
+                {% thumbnail child.main_image "275x200" crop="center" as im %}
+                    <img src="{{ im.url }}">
+                {% endthumbnail %}
                     {% else %}
                     <img src="{{ MEDIA_URL }}img/universe.jpg">
                 {% endif %}
