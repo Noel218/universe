@@ -48,7 +48,7 @@ urlpatterns = patterns('',
     (r'^robots.txt$', direct_to_template, {
         'template': 'robots.txt',
         }),
-    (r'^yandex_70fe03dbe56a9bca.html$', direct_to_template, {
+    (r'^yandex_6ddf56f62aa1fb3a.html$', direct_to_template, {
         'template': 'yandex_webmail_vertif.html',
         }),
 )
