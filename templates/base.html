@@ -22,7 +22,6 @@
     {% block extrahead %}{% endblock %}
 </head>
 <body>
-{{ constants.yandex_counter|safe }}
 <div id="main_column">
     {% if request.path == "/" %}<a id="logo">
     {% else %}
@@ -89,9 +88,7 @@
         </ul>
     {% endblock %}
 </div>
-
+{{ constants.yandex_counter|safe }}
 {{ constants.google_analytics|safe }}
-
-
 </body>
 </html>
