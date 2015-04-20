@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /
+Disallow:
+Disallow: /admin/
 
 Host: www.universe.org.ua
-Sitemap: http://www.universe.org.ua/sitemap.xml
