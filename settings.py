@@ -13,13 +13,13 @@ MANAGERS = (
     ('Noel', 'salfetkaodua@gmail.com'),
 )
 
-EMAIL_HOST = '91.200.40.88'
-EMAIL_PORT = 26
-EMAIL_USE_TLS = False
-EMAIL_SUBJECT_PREFIX = '[Hozclub]'
-EMAIL_HOST_USER = 'admin@nomax.od.ua'
-EMAIL_HOST_PASSWORD = 'Vfepth9vv'
-DEFAULT_FROM_EMAIL = 'admin@nomax.od.ua'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_SUBJECT_PREFIX = '[Universe]'
+EMAIL_HOST_USER = 'salfetkaodua@gmail.com'
+EMAIL_HOST_PASSWORD = 'Platinumpony218'
+DEFAULT_FROM_EMAIL = 'hozclub.info@gmail.com'
 
 
 
