@@ -51,4 +51,7 @@ urlpatterns = patterns('',
     (r'^yandex_6ddf56f62aa1fb3a.html$', direct_to_template, {
         'template': 'yandex_webmail_vertif.html',
         }),
+    (r'^a17d159cd27c.html $', direct_to_template, {
+        'template': 'yandex_mail_domen_yandexr_vertif.html',
+        }),
 )
