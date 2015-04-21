@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load comments i18n %}
+
+{% block title %} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+<h2>Форма обратной связи</h2>
+    {% if form.errors %}
+                <p style="color: red;">
+                    Пожалуйста исправьте следующие ошибки.
+                </p>
+                {% endif %}
+                <form method="POST">{% csrf_token %}
+        <div class="field">
+            <label for="id_name">Ф.И.О.:</label>
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+        <div class="field">
+            <label for="id_email">Ваш e-mail:</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        <div class="field">
+            <label for="id_message">Ваше сообщение:</label>
+            {{ form.message }}
+            {{ form.message.errors }}
+        </div>
+            {{ form.unibot }}
+            {{ form.unibot.errors }}
+            <input class="button" type="submit" value="Отправить" />
+        </form>
+{% endblock %}

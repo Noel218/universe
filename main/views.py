@@ -14,6 +14,9 @@ from django.core.mail import mail_managers
 from django.conf import settings
 from django.shortcuts import redirect, get_object_or_404
 from django.db.models import Q
+from main.forms import ContactForm
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 import os
 
@@ -52,12 +55,15 @@ def search_view(request):
     return object_list(request, queryset=query, template_name="search.html", extra_context={'lookup_text': lookup_text})
 
 
-def send_feedback(request):
-    if request.method == "POST":
-        message = u"Ф.И.О. - %s\ne-mail: %s\nТелефон: %s\n%s" % (
-        request.POST.get('name'), request.POST.get('email'), request.POST.get('phone'), request.POST.get('message'))
-        mail_managers("User feedback", message, fail_silently=False)
-    return redirect('/')
+def contact(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        name = form.cleaned_data['name']
+        email = form.cleaned_data['email']
+        message = form.cleaned_data['message']
+        mail_managers('Letter from Universe.org.ua', u'\n{name} \n{email} \n{message}'.format(name=name, email=email, message=message))
+        return HttpResponseRedirect(redirect_to='/')
+    return render(request,'contacts.html', {'form': form})
 
 
 def send_cart(request):

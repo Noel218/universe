@@ -5,7 +5,7 @@ from django.conf import settings
 from django.views.generic.list_detail import object_detail
 from eshop.models import ArticleItem, ArticleCategorySitemap, ArticleItemSitemap
 from main.models import News
-from main.views import cached_sitemap, search_view, send_feedback, send_cart
+from main.views import cached_sitemap, search_view, send_cart, contact
 from accounts.forms import ExRegistrationForm
 from registration.backends.default.views import RegistrationView
 admin.autodiscover()
@@ -28,7 +28,6 @@ urlpatterns = patterns('',
         'template_object_name' : 'news',
         },
         name='main_news_slug'),
-    url(r'^send-feedback/$', send_feedback, name="send_feedback"),
     url(r'^send-cart/$', send_cart, name="send_cart"),
     (r'^$', direct_to_template, {
         'template': 'index.html',
@@ -54,4 +53,5 @@ urlpatterns = patterns('',
     (r'^a17d159cd27c.html$', direct_to_template, {
         'template': 'yandex_mail_domen_yandexr_vertif.html',
         }),
+    url(r'contacts/$', contact, {}, 'contact_form'),
 )
