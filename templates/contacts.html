@@ -6,11 +6,11 @@
 {% block content %}
 <h2>Форма обратной связи</h2>
     {% if form.errors %}
-                <p style="color: red;">
-                    Пожалуйста исправьте следующие ошибки.
-                </p>
-                {% endif %}
-                <form method="POST">{% csrf_token %}
+        <p style="color: red;">
+            Пожалуйста исправьте следующие ошибки.
+        </p>
+        {% endif %}
+        <form method="POST" class="contact">{% csrf_token %}
         <div class="field">
             <label for="id_name">Ф.И.О.:</label>
             {{ form.name }}

@@ -237,3 +237,41 @@ ul#other_news li h4{margin: auto;text-align: center;color: #9a0709;font-size: 16
 ul#other_news li img{margin: 10px;float: none}
 ul#other_news li p{clear: both;text-align: justify;width: 350px;display: inline-block;}
 ul#other_news li p:hover{color: #9a0709}
+
+form.contact{
+  width: 440px;
+  margin: 10px auto;
+  text-align: center;
+}
+form.contact div.field{
+  width: 400px;
+  padding: 15px;
+  margin: 5px;
+  color: #610000;
+}
+form.contact div.field input, form.contact div.field textarea{
+  width: 85%;
+  padding: 15px;
+  margin: 5px;
+  color: #610000;
+  border-radius: 5px;
+  border: 3px solid #9a0709;
+  font-size: 1em;
+}
+form.contact input.button {
+  background: #9a0709;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  width: 380px;
+  height: auto;
+  margin: 5px 0;
+  text-align: center;
+  font-size: 1em;
+}
