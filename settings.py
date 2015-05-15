@@ -19,8 +19,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = '[Universe]'
 EMAIL_HOST_USER = 'salfetkaodua@gmail.com'
-EMAIL_HOST_PASSWORD = 'Platinumpony218'
-DEFAULT_FROM_EMAIL = 'hozclub.info@gmail.com'
+EMAIL_HOST_PASSWORD = 'Platinumpony2180'
+DEFAULT_FROM_EMAIL = 'salfetkaodua@gmail.com'
 
 
 
