@@ -5,44 +5,6 @@ PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    ('Noel', 'salfetkaodua@gmail.com'),
-)
-
-MANAGERS = (
-    ('Noel', 'salfetkaodua@gmail.com'),
-    ('Anna', 'info@universe.org.ua'),
-)
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_SUBJECT_PREFIX = '[Universe]'
-EMAIL_HOST_USER = 'salfetkaodua@gmail.com'
-EMAIL_HOST_PASSWORD = 'Platinumpony2180'
-DEFAULT_FROM_EMAIL = 'salfetkaodua@gmail.com'
-
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'universe',          # Or path to database file if using sqlite3.
-        'USER': 'universe',                     # Not used with sqlite3.
-        'PASSWORD': 'universe',                 # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    },
-    #'postgres': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-    #    'NAME': 'medex',          # Or path to database file if using sqlite3.
-    #    'USER': 'medex',                     # Not used with sqlite3.
-    #    'PASSWORD': 'medex',                 # Not used with sqlite3.
-    #    'HOST': 'dbtest.cbl9neokxtiy.us-east-1.rds.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
-    #    'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
-    #}
-}
-
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
