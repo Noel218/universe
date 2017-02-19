@@ -275,5 +275,5 @@ form.contact input.button {
   text-align: center;
   font-size: 1em;
 }
-footer{padding: 10px;text-align: right}
+footer{padding: 10px;text-align: right;clear: both;}
 footer a{font-size: 0.9em;color:#000000}
